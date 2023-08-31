@@ -1,13 +1,12 @@
 import useInput from "@/hooks/use-input";
 import { useRouter } from "next/router";
 
-const notEmpty = (value) => value.trim() !== '';
-const PLANETS_URL = 'https://swapi.dev/api/planets/';
-const PEOPLE_URI = 'https://swapi.dev/api/people';
-const FILMS_URL = 'https://swapi.dev/api/films';
-const SPECIES_URL = 'https://swapi.dev/api/species';
-const STARSHIPS_URL = 'https://swapi.dev/api/starships';
-const VEHICLES_URL = 'https://swapi.dev/api/vehicles';
+const PLANETS_URL = 'https://swapi.dev/api/planets/?search=';
+const PEOPLE_URL = 'https://swapi.dev/api/people/?search=';
+const FILMS_URL = 'https://swapi.dev/api/films/?search=';
+const SPECIES_URL = 'https://swapi.dev/api/species/?search=';
+const STARSHIPS_URL = 'https://swapi.dev/api/starships/?search=';
+const VEHICLES_URL = 'https://swapi.dev/api/vehicles/?search=';
 
 const SearchBar = () =>
 {
@@ -15,23 +14,21 @@ const SearchBar = () =>
 
     const {
         value: serachValue,
-        isValid: searchIsValid,
         inputChange: searchInputChange,
         inputBlur: searchInputBlur,
         reset: searchInputReset
-    } = useInput(notEmpty);
+    } = useInput();
 
     const {
         value: typeValue,
         inputChange: typeInputChange,
-        inputBlur: typeInputBlur,
-    } = useInput(notEmpty);
+    } = useInput();
 
-    const fetchResult = async () =>
+    const fetchResult = async (type) =>
     {
         try
         {
-            const res = await fetch('https://swapi.dev/api/people/?search='+serachValue);
+            const res = await fetch(type+serachValue);
             const data = await res.json();
             console.log(data);
             //console.log(data.results[0].birth_year);
@@ -45,14 +42,38 @@ const SearchBar = () =>
     const searchHandler = (event) =>
     {
         event.preventDefault();
+        // console.log(typeValue);
+        let type = '';
 
-        fetchResult();
+        switch(typeValue)
+        {
+            case 'people':
+                type = PEOPLE_URL;
+                break;
+            case 'films':
+                type = FILMS_URL;
+                break;
+            case 'species':
+                type = SPECIES_URL;
+                break;
+            case 'starships':
+                type = STARSHIPS_URL;
+                break;
+            case 'vehicles':
+                type = VEHICLES_URL;
+                break;
+            default:
+                type = PLANETS_URL;
+                break;
+        }
+
+        fetchResult(type);
         searchInputReset();
     }
 
     return (
         <form onSubmit={searchHandler}>
-            <select name="type" id="type" >
+            <select name="type" id="type" onChange={typeInputChange}>
                 <option value='planets'>Planets</option>
                 <option value='people'>People</option>
                 <option value='films'>Films</option>
