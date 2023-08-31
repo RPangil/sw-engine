@@ -37,14 +37,14 @@ const SearchBar = () =>
                 router.push({
                     pathname: '/result',
                     query: {
-                        type,
+                        type: typeValue,
                         val: serachValue
                     }
                 })
             }
             else
             {
-                
+
             }
             //console.log(data.results[0].birth_year);
         }
