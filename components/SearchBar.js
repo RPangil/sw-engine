@@ -1,5 +1,5 @@
 import useInput from "@/hooks/use-input";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const PLANETS_URL = 'https://swapi.dev/api/planets/?search=';
 const PEOPLE_URL = 'https://swapi.dev/api/people/?search=';
@@ -31,6 +31,21 @@ const SearchBar = () =>
             const res = await fetch(type+serachValue);
             const data = await res.json();
             console.log(data);
+
+            if(data.count > 1)
+            {
+                router.push({
+                    pathname: '/result',
+                    query: {
+                        type,
+                        val: serachValue
+                    }
+                })
+            }
+            else
+            {
+                
+            }
             //console.log(data.results[0].birth_year);
         }
         catch(err)
@@ -66,7 +81,7 @@ const SearchBar = () =>
                 type = PLANETS_URL;
                 break;
         }
-
+        
         fetchResult(type);
         searchInputReset();
     }
