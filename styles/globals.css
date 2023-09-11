@@ -10,6 +10,7 @@ body
 {
     max-width: 100vw;
     overflow-x: hidden;
+    font-size: 18px;
 }
 
 main
@@ -25,6 +26,12 @@ a
 {
     color: inherit;
     text-decoration: none;
+}
+
+@font-face 
+{
+    font-family: 'StarJedi';
+    src: url('../assets/StarJedi/Starjedi.ttf');
 }
 
 @media (prefers-color-scheme: dark) 

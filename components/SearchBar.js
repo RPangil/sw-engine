@@ -88,7 +88,7 @@ const SearchBar = () =>
     }
 
     return (
-        <form onSubmit={searchHandler} className="searchForm">
+        <form onSubmit={searchHandler} className={styles.searchForm}>
             <select name="type" id="type" onChange={typeInputChange}>
                 <option value='planets'>Planets</option>
                 <option value='people'>People</option>

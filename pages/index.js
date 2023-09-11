@@ -1,5 +1,6 @@
 import SearchBar from '@/components/SearchBar'
 import Head from 'next/head'
+import style from './main.module.css';
 
 export default function Home() {
     return (
@@ -11,7 +12,7 @@ export default function Home() {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
-            <h1>SW Engine</h1>
+            <h1 className={style.appTitle}>SW Engine</h1>
             <SearchBar />
         </main>
         </>
