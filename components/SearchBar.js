@@ -1,5 +1,6 @@
 import useInput from "@/hooks/use-input";
 import { useRouter } from "next/navigation";
+import styles from './SearchBar.module.css';
 
 const PLANETS_URL = 'https://swapi.dev/api/planets/?search=';
 const PEOPLE_URL = 'https://swapi.dev/api/people/?search=';
@@ -87,7 +88,7 @@ const SearchBar = () =>
     }
 
     return (
-        <form onSubmit={searchHandler}>
+        <form onSubmit={searchHandler} className="searchForm">
             <select name="type" id="type" onChange={typeInputChange}>
                 <option value='planets'>Planets</option>
                 <option value='people'>People</option>
