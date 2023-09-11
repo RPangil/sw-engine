@@ -1,6 +1,6 @@
 import SearchBar from '@/components/SearchBar'
 import Head from 'next/head'
-import style from './main.module.css';
+import style from './main.module.scss';
 
 export default function Home() {
     return (
