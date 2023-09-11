@@ -1,6 +1,6 @@
 import useInput from "@/hooks/use-input";
 import { useRouter } from "next/navigation";
-import styles from './SearchBar.module.css';
+import styles from './SearchBar.module.scss';
 
 const PLANETS_URL = 'https://swapi.dev/api/planets/?search=';
 const PEOPLE_URL = 'https://swapi.dev/api/people/?search=';
