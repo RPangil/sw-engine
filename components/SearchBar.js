@@ -1,6 +1,7 @@
 import useInput from "@/hooks/use-input";
 import { useRouter } from "next/navigation";
 import styles from './SearchBar.module.scss';
+import { useEffect } from "react";
 
 const PLANETS_URL = 'https://swapi.dev/api/planets/?search=';
 const PEOPLE_URL = 'https://swapi.dev/api/people/?search=';
@@ -21,7 +22,7 @@ const SearchBar = () =>
     } = useInput();
 
     const {
-        value: typeValue,
+        inputValue: typeValue,
         inputChange: typeInputChange,
     } = useInput();
 
@@ -41,7 +42,7 @@ const SearchBar = () =>
                         type: typeValue,
                         val: serachValue
                     }
-                })
+                }, '/result')
             }
             else
             {
@@ -82,6 +83,8 @@ const SearchBar = () =>
                 type = PLANETS_URL;
                 break;
         }
+
+        //console.log(type);
         
         fetchResult(type);
         searchInputReset();
