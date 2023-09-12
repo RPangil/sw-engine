@@ -3,7 +3,6 @@ import { useState } from "react"
 const useInput = () =>
 {
     const [enteredValue, setEnteredValue] = useState('');
-    const [selectedType, setSelectedType] = useState('');
     const [isTouched, setIsTouched] = useState(false);
 
     const inputChange = (event) =>
