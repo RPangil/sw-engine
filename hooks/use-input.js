@@ -3,6 +3,7 @@ import { useState } from "react"
 const useInput = () =>
 {
     const [enteredValue, setEnteredValue] = useState('');
+    const [selectedType, setSelectedType] = useState('');
     const [isTouched, setIsTouched] = useState(false);
 
     const inputChange = (event) =>
@@ -13,6 +14,11 @@ const useInput = () =>
     const inputBlur = () =>
     {
         setIsTouched(true);
+    }
+    
+    const typeInputChange = (event) =>
+    {
+        setEnteredValue(event.target.value);
     }
 
     const reset = () =>
@@ -25,6 +31,7 @@ const useInput = () =>
         value: enteredValue,
         inputChange,
         inputBlur,
+        typeInputChange,
         reset
     }
 }
