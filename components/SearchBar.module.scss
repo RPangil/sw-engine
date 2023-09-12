@@ -2,6 +2,27 @@
 {
     display: block;
 
+    select[name=type], input[type=search]
+    {
+        height: calc(1.5rem + 1rem);
+        padding: 0 0.5rem;
+        border: none;
+        font-size: 1.5rem;
+    }
+
+    select[name=type]
+    {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    input[type=search]
+    {
+        padding-left: 0.5rem;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
     button
     {
         margin: auto;
