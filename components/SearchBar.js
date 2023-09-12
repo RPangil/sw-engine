@@ -42,7 +42,7 @@ const SearchBar = () =>
                         type: typeValue,
                         val: serachValue
                     }
-                }, '/result')
+                })
             }
             else
             {
