@@ -3,6 +3,7 @@ import { useState } from "react"
 const useInput = () =>
 {
     const [enteredValue, setEnteredValue] = useState('');
+    const [selectedType, setSelectedType] = useState('planets');
     const [isTouched, setIsTouched] = useState(false);
 
     const inputChange = (event) =>
@@ -17,7 +18,7 @@ const useInput = () =>
     
     const typeInputChange = (event) =>
     {
-        setEnteredValue(event.target.value);
+        setSelectedType(event.target.value);
     }
 
     const reset = () =>
@@ -28,6 +29,7 @@ const useInput = () =>
 
     return {
         value: enteredValue,
+        inputValue: selectedType,
         inputChange,
         inputBlur,
         typeInputChange,
