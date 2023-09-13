@@ -49,6 +49,8 @@ const SearchBar = () =>
 
             }
             //console.log(data.results[0].birth_year);
+            
+            searchInputReset();
         }
         catch(err)
         {
@@ -87,7 +89,6 @@ const SearchBar = () =>
         //console.log(type);
         
         fetchResult(type);
-        searchInputReset();
     }
 
     return (
