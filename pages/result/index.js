@@ -11,7 +11,8 @@ const VEHICLES_URL = 'https://swapi.dev/api/vehicles/?search=';
 
 const results = (props) =>
 {
-    const [searchResult, setSearchResult] = useState([])
+    const [searchResult, setSearchResult] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const params = useSearchParams();
     const type = params.get('type');
@@ -21,6 +22,8 @@ const results = (props) =>
 
     const fetchResult = useCallback(async () =>
     {
+        setIsLoading(true);
+
         switch(type)
         {
             case 'people':
@@ -56,7 +59,7 @@ const results = (props) =>
             while(data.next !== null)
             {
                 console.log(data.next);
-                console.log(result);
+                console.log(resultList);
 
                 res = await fetch(data.next);
                 data = await res.json();
@@ -73,17 +76,20 @@ const results = (props) =>
         {
             console.log(err);
         }
-    });
+        
+        setIsLoading(false);
+    }, []);
 
     useEffect(() =>
     {
         fetchResult();
-    }, [fetchResult])
+    }, [])
 
     return (
-        searchResult.length <= 0 ? <p>No results found</p> : 
+        isLoading ? <p>Loading results</p> : searchResult.length <= 0 ? <p>No results found</p> : 
         searchResult.map((data) =>
         {
+            {console.log(data.name)}
             <h1>{data.name}</h1>
         })
     );
