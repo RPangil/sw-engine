@@ -58,8 +58,8 @@ const results = (props) =>
 
             while(data.next !== null)
             {
-                console.log(data.next);
-                console.log(resultList);
+                // console.log(data.next);
+                // console.log(resultList);
 
                 res = await fetch(data.next);
                 data = await res.json();
@@ -68,9 +68,9 @@ const results = (props) =>
             }
 
             setSearchResult(resultList);
-            console.log(resultList);
-            
-            //console.log(data.results[0].birth_year);
+
+            // console.log(searchResult);
+            // console.log(resultList);
         }
         catch(err)
         {
@@ -86,11 +86,11 @@ const results = (props) =>
     }, [])
 
     return (
-        isLoading ? <p>Loading results</p> : searchResult.length <= 0 ? <p>No results found</p> : 
+        isLoading ? <p>Loading results</p> : searchResult.length <= 0 ? <p>No results found</p> :
         searchResult.map((data) =>
         {
-            {console.log(data.name)}
-            <h1>{data.name}</h1>
+            return <h1>{data.name}</h1>
+            // {console.log(data.name)}
         })
     );
 }
