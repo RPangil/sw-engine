@@ -1,6 +1,8 @@
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
 import { Fragment, useCallback, useEffect, useState } from "react";
+import Link from "next/link";
+
+import styles from './result.module.scss';
 
 const PLANETS_URL = 'https://swapi.dev/api/planets/?search=';
 const PEOPLE_URL = 'https://swapi.dev/api/people/?search=';
@@ -85,13 +87,23 @@ const results = (props) =>
         fetchResult();
     }, [])
 
+
+
     return (
         isLoading ? <p>Loading results</p> : searchResult.length <= 0 ? <p>No results found</p> :
-        searchResult.map((data) =>
-        {
-            return <h1>{data.name}</h1>
-            // {console.log(data.name)}
-        })
+        <Fragment>
+            {
+                searchResult.map((data) =>
+                {
+                    return (
+                        <div className={styles.resultItem}>
+                            <h1>{data.name}</h1>
+                            <p>A {data.terrain} planet that has a population of {data.population}.</p>
+                        </div>
+                    )
+                })
+            }
+        </Fragment>
     );
 }
 
