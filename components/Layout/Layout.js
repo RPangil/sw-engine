@@ -1,11 +1,12 @@
 import { Fragment } from 'react';
+import Navigation from '../Navigation/Navigation';
 import styles from './Layout.module.scss';
 
 const Layout = (props) =>
 {
     return(
         <Fragment>
-            {/* Insert nav here */}
+            <Navigation />
             <main className={styles.main}>{props.children}</main>
         </Fragment>
     );
