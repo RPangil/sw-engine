@@ -6,7 +6,7 @@ const Layout = (props) =>
     return(
         <Fragment>
             {/* Insert nav here */}
-            <main>{props.children}</main>
+            <main className={styles.main}>{props.children}</main>
         </Fragment>
     );
 }
