@@ -1,5 +1,5 @@
-import SearchBar from '@/components/SearchBar'
-import Head from 'next/head'
+import SearchBar from '@/components/SearchBar/SearchBar';
+import Head from 'next/head';
 import style from './main.module.scss';
 
 export default function Home() {

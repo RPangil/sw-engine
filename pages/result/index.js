@@ -1,6 +1,5 @@
 import { useSearchParams } from "next/navigation";
 import { Fragment, useCallback, useEffect, useState } from "react";
-import Link from "next/link";
 
 import styles from './result.module.scss';
 
